@@ -1,0 +1,18 @@
+.skyline{
+    &-weather {
+        display:flex;
+        justify-content: space-between;
+    }
+    &-weather {
+        &-icon {
+            width: 48px;
+        }
+
+        &-item {
+            text-align: center;
+        }
+    }
+    &-temperature {
+        font-size: 10px;
+    }
+}

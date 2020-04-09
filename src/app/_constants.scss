@@ -1,0 +1,10 @@
+$skyline-base-padding: 16px;
+$skyline-base-margin: 16px;
+$desktop-min-width: 500px;
+$desktop-max-width: 450px;
+
+@mixin desktop {
+    @media (min-width: #{$desktop-min-width}) {
+        @content;
+    }
+}

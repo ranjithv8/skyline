@@ -1,0 +1,12 @@
+<mat-card [ngClass]="{'skyline-result-recommended': preferred, 'skyline-result':true }">
+    <div class="skyline-result-flight" *ngIf="flight; else noflights">
+        <div class="skyline-result-flight-source">{{flight.from}} <br> {{flight.to}}</div>
+        <div class="skyline-result-flight-duration">{{flight.displayDuration}}</div>
+        <div class="skyline-result-flight-price">{{flight.price}}</div>
+    </div>
+    <app-weather [forecast]="forecast"></app-weather>
+</mat-card>
+
+<ng-template #noflights>
+    <div>No direct flights found for the route</div>
+</ng-template>    

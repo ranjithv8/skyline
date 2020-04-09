@@ -1,0 +1,7 @@
+<div class="skyline-weather" *ngIf="forecast">
+    <div *ngFor="let weather of forecast" class="skyline-weather-item">
+        <div class="skyline-temperature">{{formatDate(weather.date)}}</div>
+        <img class="skyline-weather-icon" src="/assets/img/{{weather.dayIcon}}-s.png"/>
+        <div class="skyline-temperature">{{weather.minTemperature}}•F/{{weather.maxTemperature}}•F</div>
+    </div>
+</div>

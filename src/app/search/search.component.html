@@ -1,0 +1,44 @@
+<form [formGroup]="searchForm" (ngSubmit)="search()" class="skyline-search-form">
+    <mat-form-field>
+        <input matInput
+               placeholder="Source"
+               aria-label="Source"
+               [matAutocomplete]="sources"
+               formControlName="source">
+        <mat-autocomplete #sources="matAutocomplete" [displayWith]="getCityName">
+          <mat-option *ngFor="let source of filteredSources | async" [value]="source">
+            <span>{{source.name}}</span>
+          </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput
+               placeholder="Destination"
+               aria-label="Destination"
+               [matAutocomplete]="destination"
+               formControlName="destination">
+        <mat-autocomplete #destination="matAutocomplete" [displayWith]="getCityName">
+          <mat-option *ngFor="let destination of filteredDestinations | async" [value]="destination">
+            <div class="skyline-star-item">
+                <span>{{destination.name}}</span>
+                <button mat-raised-button (click)="starDestination($event, destination)" [ngClass]="{'skyline-search-star':true,'skyline-search-star__added':destination.favourite}"></button>
+            </div>
+          </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    
+
+    <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="skyline-search-button-container">
+        <button type="submit" [disabled]="!searchForm.valid" mat-raised-button color="accent">Search</button>
+        <button (click)='comparefavourites()' [disabled]="disableComparison()" mat-raised-button color="accent">Compare Starred</button>
+    </div>
+
+</form>

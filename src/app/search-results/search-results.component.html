@@ -1,0 +1,19 @@
+<mat-card class="skyline-search-results-weather">
+    <div class="skyline-results-weather-heading">Weather at {{destination}} for next five days</div>
+    <app-weather [forecast]="forecast"></app-weather>
+</mat-card>
+
+<div matSort (matSortChange)="sortData($event)">
+    <mat-card class="skyline-results-header">
+        <div mat-sort-header="flight" class="skyline-favourites-header-flight">Flight</div>
+        <div mat-sort-header="duration" class="skyline-favourites-header-duration">Duration</div>
+        <div mat-sort-header="price" class="skyline-favourites-header-price">Price</div>
+    </mat-card>
+
+    <div *ngFor="let flight of flightOptions">
+        <app-search-result  [flight]="flight"></app-search-result>
+    </div>
+</div>
+
+
+<app-loader *ngIf="isLoading"></app-loader>

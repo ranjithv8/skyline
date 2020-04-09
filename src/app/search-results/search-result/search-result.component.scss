@@ -1,0 +1,44 @@
+@import './../../constants';
+$skyline-weather-icon-width: 48px;
+.skyline-result{
+    margin-bottom: $skyline-base-margin;
+
+    &-flight,
+    &-weather {
+        display:flex;
+        justify-content: space-between;
+    }
+    &-flight {
+        margin-bottom: $skyline-base-margin;
+        &-source {
+            width: 30%;
+            text-align: left;
+        }
+    
+        &-duration {
+            width: 30%;
+            text-align: center
+        }
+    
+        &-price {
+            width: 30%;
+            text-align: right;
+        }
+    }
+    &-weather {
+        &-icon {
+            width: $skyline-weather-icon-width;
+        }
+
+        &-item {
+            text-align: center;
+        }
+    }
+    &-temperature {
+        font-size: 12px;
+    }
+
+    &-recommended {
+        background: rgba(38, 194, 129, 0.5);
+    }
+}

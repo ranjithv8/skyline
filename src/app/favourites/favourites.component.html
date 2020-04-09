@@ -1,0 +1,14 @@
+<div matSort  (matSortChange)="sortData($event)">
+    <mat-card class="skyline-favourites-header">
+        <div mat-sort-header="flight" class="skyline-favourites-header-flight">Flight</div>
+        <div mat-sort-header="duration" class="skyline-favourites-header-duration">Duration</div>
+        <div mat-sort-header="price" class="skyline-favourites-header-price">Price</div>
+    </mat-card>
+
+    <div *ngFor="let n of destinationData; let i = index">
+        <app-search-result (click)= 'showDestination(i)' [flight]="n[0][0]" [forecast]="n[1]" [preferred]="n[2]"></app-search-result>
+    </div>
+</div>
+
+
+<app-loader *ngIf="isLoading"></app-loader>

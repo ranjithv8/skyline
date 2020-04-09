@@ -1,0 +1,15 @@
+@import "constants";
+
+.skyline-container {
+    padding: $skyline-base-padding;
+    margin: auto;
+}
+
+@include desktop {
+    .skyline-container {
+        max-width: $desktop-max-width;
+    }
+    
+}
+
+
