@@ -46,5 +46,9 @@ export class DestinationService {
     });
   }
 
+  getCity( code) {
+    return  this.cities[code];
+  }
+
 
 }

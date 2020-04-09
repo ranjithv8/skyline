@@ -9,11 +9,13 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { WeatherService } from '../services/weather.service';
+import { DestinationService } from '../services/destination.service';
 
 describe('FavouritesComponent', () => {
   let component: FavouritesComponent;
   let fixture: ComponentFixture<FavouritesComponent>;
   let weatherService: WeatherService;
+  let destinationService: DestinationService;
   let router: Router;
 
   beforeEach(async(() => {
@@ -30,7 +32,8 @@ describe('FavouritesComponent', () => {
               get: (id) => {return 'param'}
             })}
         },
-        WeatherService
+        WeatherService,
+        DestinationService
       ]
     })
     .compileComponents();
@@ -40,6 +43,7 @@ describe('FavouritesComponent', () => {
     fixture = TestBed.createComponent(FavouritesComponent);
     component = fixture.componentInstance;
     weatherService = TestBed.get(WeatherService);
+    destinationService = TestBed.get(DestinationService);
     router = TestBed.get(Router);
     fixture.detectChanges();
   });
@@ -48,12 +52,13 @@ describe('FavouritesComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('#markPreferredDestination function:',()=> {
+  describe('#addAdditionalParamsToDisplay function:',()=> {
     it('should mark the data array as preferred', () => {
       spyOn(weatherService, 'getAverageTemperature').and.returnValues(20,40,30);
+      spyOn(destinationService, 'getCity').and.returnValue({name:'',code:'',favourite:false});
       component.destinations=['AMD', 'MAD', 'LCG'];
       const data=[[['flightoption1'],['weather1']], [['flightoption2'],['weather1']], [['flightoption3'],['weather3']]]
-      component.markPreferredDestination(data);
+      component.addAdditionalParamsToDisplay(data);
       expect(data[0][2]).toBeTrue();
     });
   });

@@ -16,6 +16,7 @@ import { Sort } from '@angular/material/sort';
 export class FavouritesComponent implements OnInit {
   favouriteCities: Cities;
   source: string;
+  sourceName: string;
   destinations: string[];
   date: string;
   destinationData;
@@ -26,6 +27,7 @@ export class FavouritesComponent implements OnInit {
     private route: ActivatedRoute,
     private searchService: FlightSearchService,
     private weatherService: WeatherService,
+    private destinationService: DestinationService,
     private router: Router
   ) { }
 
@@ -43,6 +45,7 @@ export class FavouritesComponent implements OnInit {
         this.getDestinationDetails()
           .subscribe((data) => {
             this.setDestinationData(data);
+            this.sourceName=this.destinationService.getCity(this.source).name;
             this.isLoading = false;
         });
       });
@@ -62,7 +65,7 @@ export class FavouritesComponent implements OnInit {
   }
 
   setDestinationData(data) {
-    this.markPreferredDestination(data);
+    this.addAdditionalParamsToDisplay(data);
     this.destinationData = Object.values(data);
   }
 
@@ -76,9 +79,11 @@ export class FavouritesComponent implements OnInit {
     });
   }
 
-  /* Finding the preferred destination by comparing the avg temprature*/
+  /* addAdditionalParams finds the preferred destination by comparing the avg temprature
+  *  and sets the source and destination
+  */
 
-  markPreferredDestination(data) {
+  addAdditionalParamsToDisplay(data) {
     let cityCode;
     let preferenceIndex;
     let destinationUnlikeliness = Infinity;
@@ -90,6 +95,7 @@ export class FavouritesComponent implements OnInit {
         destinationUnlikeliness = destinationAverageTemperature;
         preferenceIndex = i;
       }
+      data[i][3] = this.destinationService.getCity(cityCode).name;
     });
     data[preferenceIndex][2] = true;
   }

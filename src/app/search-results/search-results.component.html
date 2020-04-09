@@ -13,6 +13,11 @@
     <div *ngFor="let flight of flightOptions">
         <app-search-result  [flight]="flight"></app-search-result>
     </div>
+
+    <div *ngIf="flightOptions.length === 0">
+        No direct flights found
+    </div>
+    
 </div>
 
 

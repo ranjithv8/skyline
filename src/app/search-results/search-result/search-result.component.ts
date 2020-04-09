@@ -16,6 +16,12 @@ export class SearchResultComponent implements OnInit {
   @Input()
   preferred: boolean;
 
+  @Input()
+  from: string;
+
+  @Input()
+  to: string;
+
   constructor() { }
 
   ngOnInit(): void {
