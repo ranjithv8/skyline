@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchResultComponent } from './search-result.component';
+import { Sort } from '@angular/material/sort';
 
 describe('SearchResultComponent', () => {
   let component: SearchResultComponent;
@@ -22,4 +23,6 @@ describe('SearchResultComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  
 });
