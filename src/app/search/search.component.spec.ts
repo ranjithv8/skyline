@@ -135,6 +135,11 @@ describe('SearchComponent', () => {
         code: 'AMS',
         name: 'Amsterdam',
         favourite: false
+      },
+      LCG:{
+        code: 'LCG',
+        name: 'Paris',
+        favourite: false
       }
     }
     spyOn(router, 'navigate');
@@ -142,7 +147,7 @@ describe('SearchComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith(['/favourites'],{
       queryParams: { 
         from: 'MAD',
-        to: 'AMS',
+        to: 'AMS,LCG',
         date: "22/4/2018"
       }
     });
