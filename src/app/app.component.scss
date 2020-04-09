@@ -1,8 +1,17 @@
 @import "constants";
 
+$skyline-logo-width: 42px;
+$skyline-font-size: 18px;
+
 .skyline-container {
     padding: $skyline-base-padding;
     margin: auto;
+    font-size: $skyline-font-size;
+}
+
+.skyline-logo {
+    width: $skyline-logo-width;
+    margin-right: $skyline-base-margin;
 }
 
 @include desktop {
