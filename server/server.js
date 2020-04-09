@@ -1,11 +1,11 @@
 const express = require('express');
 const axios = require('axios');
 const app = express();
-const port = 3000
+let PORT = process.env.PORT || 3000;
 
 
 
-app.use('/',express.static('dist/skyline'));
+app.use(express.static('dist/skyline'));
 
 app.get('/api/cities',(req, res) => {
     let url = 'https://api.skypicker.com/locations';
@@ -30,7 +30,7 @@ app.get('/api/search',(req, res) => {
 
 
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
+app.listen(PORT, () => console.log(` App listening to ${PORT}`));
 
 
 function skylineRequestApi (url, params, res) {
