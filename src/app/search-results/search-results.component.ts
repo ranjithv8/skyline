@@ -18,7 +18,7 @@ export class SearchResultsComponent implements OnInit {
   date: string;
   destination: string;
   forecast: Weather[];
-  flightOptions: Flight[];
+  flightOptions: Flight[] = [];
   sortedData;
 
   constructor(
