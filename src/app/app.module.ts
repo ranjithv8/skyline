@@ -23,9 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort'
 import { HttpClientModule } from '@angular/common/http';
-import { MatBadgeModule } from '@angular/material/badge';
 import { LoaderComponent } from './ui/loader/loader.component';
-import { WeatherComponent } from './search-results/weather/weather.component';
+import { WeatherComponent } from './weather/weather.component';
 
 @NgModule({
   declarations: [
@@ -56,8 +55,7 @@ import { WeatherComponent } from './search-results/weather/weather.component';
     MatProgressSpinnerModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatSortModule,
-    MatBadgeModule
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
