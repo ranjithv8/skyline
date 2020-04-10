@@ -8,13 +8,15 @@ import { City, Cities } from '../model/types';
   providedIn: 'root'
 })
 export class DestinationService {
-  favouriteCities: Cities;
+  favouriteCities: Cities = {};
   cities: Cities =  null;
 
   constructor(private http: HttpClient) {
 
   }
-
+  /**
+   * fetches the city dump
+   */
   fetch(): Observable<Cities> {
     if(this.cities === null) {
       return this.http.get('/api/cities?type=dump&locale=en-US&location_types=airport&limit=1000&sort=name&active_only=true')
@@ -46,6 +48,10 @@ export class DestinationService {
     });
   }
 
+  /**
+   * 
+   * @param code :IATA code
+   */
   getCity( code) {
     return  this.cities[code];
   }

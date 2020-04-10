@@ -12,9 +12,14 @@ export class WeatherService {
   forecast: Forecast = {};
 
   constructor(private http: HttpClient) { 
-    this.apikey = 'K3JAwzgXMAgalLUPrAD73dGrH0PibAel';
+    this.apikey = 'K3JAwzgXMAgalLUPrAD73dGrH0PibAel'; //TODO: should be moved to server
   }
 
+  /**
+   * 
+   * @param locationCode: IATA code
+   * fetches the accuweather location key for the given city code
+   */
   fetchLocationKey(locationCode) {
     return this.http.get('/api/location',{
       params: {
@@ -27,6 +32,12 @@ export class WeatherService {
     });
   }
 
+  /**
+   * 
+   * @param locationKey : accuweather location key
+   * @param locationCode : IATA location code
+   * fetches forecast for next five days.
+   */
   fetchForecast(locationKey, locationCode) : Observable<Weather[]>{
     return (this.http.get('/api/forecast', {
       params: {
@@ -41,6 +52,11 @@ export class WeatherService {
     );
   }
 
+  /**
+   * 
+   * @param locationCode : IATA code
+   * for given city fetches the forecast
+   */
   fetchForcastForLocationCode(locationCode) {
     return this.fetchLocationKey(locationCode).pipe(
       switchMap((response: any) => {
@@ -53,6 +69,12 @@ export class WeatherService {
     return this.forecast[code].avgTemperature;
   }
 
+  /**
+   * 
+   * @param response: accuweather api response
+   * @param code : IATA city code
+   * maps the forecast to app types.
+   */
   mapForecast(response, code): Weather[] {
     this.forecast[code] = {
       dailyWeather: [],

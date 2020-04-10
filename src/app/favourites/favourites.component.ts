@@ -104,6 +104,9 @@ export class FavouritesComponent implements OnInit {
     data[preferenceIndex][2] = true;
   }
 
+  /*
+  * Sorting by price sorts by the price of lowest priced flight in each destination.
+  */
   sortData(sort: Sort) {
     const data = this.destinationData.slice();
     if (!sort.active || sort.direction === '') {

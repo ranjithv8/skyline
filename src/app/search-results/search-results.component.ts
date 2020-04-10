@@ -44,6 +44,8 @@ export class SearchResultsComponent implements OnInit {
       });
   }
 
+  /*Fetches both weather and flight details for the destination*/
+
   getDestinationData() {
     return combineLatest([
       this.searchService.search(this.source, this.destination, this.date),
