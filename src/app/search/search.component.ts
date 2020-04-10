@@ -43,7 +43,11 @@ export class SearchComponent implements OnInit, OnDestroy {
       this.destinations = Object.values(response);
       this.filteredSources = this.autoComplete(this.searchForm.get('source'), this.sources);
       this.filteredDestinations = this.autoComplete(this.searchForm.get('destination'), this.destinations);
+    }, (error)=> {
+      this.formError = 'Something went wrong!';
+      this.isLoading = false;
     });
+    this.favouriteCities = this.destinationService.getFavouriteCities();
   }
 
   setUpForm() {
