@@ -6,6 +6,7 @@
     </mat-card>
 
     <div class="skyline-favourites-loader" *ngIf="isLoading">Loading your favourite destinations</div>
+    <div class="skyline-favourites-loader" *ngIf="loadError">{{loadError}}</div>
     <div *ngFor="let n of destinationData; let i = index">
         <app-search-result (click)= 'showDestination(i)' [flight]="n[0][0]" [forecast]="n[1]" [preferred]="n[2]" [from]="sourceName" [to]="n[3]"></app-search-result>
     </div>

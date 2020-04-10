@@ -22,6 +22,7 @@ export class FavouritesComponent implements OnInit {
   destinationData;
   isLoading = false;
   sortedData;
+  loadError: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -47,7 +48,10 @@ export class FavouritesComponent implements OnInit {
             this.setDestinationData(data);
             this.sourceName=this.destinationService.getCity(this.source).name;
             this.isLoading = false;
-        });
+          },(error) => {
+            this.loadError = "Something went wrong!"
+            this.isLoading = false;
+          });
       });
   }
 
