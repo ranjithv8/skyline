@@ -31,7 +31,7 @@ app.get('/api/search',(req, res) => {
 app.use(express.static('dist/skyline'));
 app.get('/*',function(req,res){
     console.log(__dirname);
-    res.sendFile('/dist/skyline/index.html');
+    res.sendFile(__dirname+'/skyline/index.html');
 });
 
 
