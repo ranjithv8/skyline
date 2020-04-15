@@ -5,7 +5,7 @@ let PORT = process.env.PORT || 3000;
 
 
 
-app.use(express.static('dist/skyline'));
+
 
 app.get('/api/cities',(req, res) => {
     let url = 'https://api.skypicker.com/locations';
@@ -27,6 +27,12 @@ app.get('/api/search',(req, res) => {
     return skylineRequestApi(url, req.query, res);
 });
 
+
+app.use(express.static('dist/skyline'));
+app.get('/*',function(req,res){
+    console.log(__dirname);
+    res.sendFile('/dist/skyline/index.html');
+});
 
 
 

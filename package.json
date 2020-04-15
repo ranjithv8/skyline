@@ -5,11 +5,12 @@
     "ng": "ng",
     "start:dev": "ng serve",
     "build:dev": "ng build",
-    "build": "ng build --prod",
+    "build": "ng build --prod && npm run copy:server ",
     "test": "ng test --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start": "node server/server.js"
+    "start": "node dist/server.js",
+    "copy:server": "copyfiles -u 1 server/*.js dist"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +25,7 @@
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
     "axios": "^0.19.2",
+    "copyfiles": "^2.2.0",
     "express": "^4.17.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
