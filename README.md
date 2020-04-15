@@ -14,7 +14,7 @@ npm run build
 
 npm run start , then go to http://localhost:3000
 
-App also deployed at https://skylinev1.herokuapp.com/
+App also deployed at https://skylinev1.herokuapp.com/ (Best viewed in mobile)
 
 Sample data:
 Source: Amsterdam
